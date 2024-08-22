@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Bookmarklet</title>
+</head>
+<body>
+    <h1>Teste Bookmarklet</h1>
+    <script>
+        (function(){
+            var script = document.createElement('script');
+            script.src = 'https://eduardoroeher.github.io/webgis/ola_mundo.js';
+            document.head.appendChild(script);
+        })();
+    </script>
+</body>
+</html>
