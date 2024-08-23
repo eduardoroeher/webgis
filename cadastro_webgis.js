@@ -173,15 +173,23 @@
 					}
 				}
 
-				// Verifica se o tipo de cadastro já foi escolhido
-				if (!tipoCadastro) {
-					tipoCadastro = prompt("Por favor, escolha o tipo de cadastro: NOVO CADASTRO ou REVISAO").toUpperCase();
-					if (!Object.values(TipoCadastro).includes(tipoCadastro)) {
-						console.log("Tipo de cadastro inválido. Preenchimento automático cancelado.");
-						tipoCadastro = null; // Reinicia a variável para solicitar novamente em futuras interações
-						return;
-					}
-				}
+			// Verifica se o tipo de cadastro já foi escolhido
+			if (!tipoCadastro) {
+			    const escolha = prompt("Por favor, escolha o tipo de cadastro:\n1. NOVO CADASTRO\n2. REVISÃO");
+			    
+			    switch(escolha) {
+			        case '1':
+			            tipoCadastro = TipoCadastro.NOVO_CADASTRO;
+			            break;
+			        case '2':
+			            tipoCadastro = TipoCadastro.REVISAO;
+			            break;
+			        default:
+			            console.log("Tipo de cadastro inválido. Preenchimento automático cancelado.");
+			            tipoCadastro = null; // Reinicia a variável para solicitar novamente em futuras interações
+			            return;
+			    }
+			}
 
 				preencherCampos();
 			}
