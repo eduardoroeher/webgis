@@ -19,7 +19,7 @@
     function preencherCampos() {
         //preencherCadastrador();
         preencherObservacao();
-        //preencherOperadorCQ();
+        preencherOperadorCQ();
         preencherRevisao();
         //preencherDataCadastro();
         preencherDataModificacao();
