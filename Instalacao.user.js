@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Carregar Script de Preenchimento Automático
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      2.0
 // @description  Carrega e executa um script de preenchimento automático
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @grant        none
