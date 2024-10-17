@@ -11,7 +11,7 @@
     'use strict';
 
     // Mensagem para verificar se o script está sendo carregado
-    console.log("Script carregado! 0.4");
+    console.log("Script carregado! 1.04");
 	
 	var currentUrl = window.location.href;
 
