@@ -394,7 +394,7 @@ function preencherCampos() {
     // Função para adicionar o ouvinte do botão direito do mouse
     function adicionarOuvinteBotaoDireitoMouse() {
         document.addEventListener('mousedown', function(event) {
-            if (event.button === 2) {
+            if (event.button === 2 || keyEvent.key.toLowerCase() === 'c') {
                 console.log("Botão 2 do mouse pressionado!");
                 event.preventDefault();
 
@@ -415,7 +415,7 @@ function preencherCampos() {
             }
 
 		//Buscar chave para revisão
-		if (event.button === 1 && event.ctrlKey && tipoCadastro === TipoCadastro.REVISAR_CHAVES) {
+		if (keyEvent.key.toLowerCase() === 'b' && tipoCadastro === TipoCadastro.REVISAR_CHAVES) {
                 console.log("Botão 1 do mouse pressionado!");
                 event.preventDefault();
                 obterChave();
