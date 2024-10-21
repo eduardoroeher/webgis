@@ -414,8 +414,8 @@ function preencherCampos() {
                 }
             }
 
-			//Buscar chave para revisão
-			if (event.button === 1 && event.ctrlKey) {
+		//Buscar chave para revisão
+		if (event.button === 1 && event.ctrlKey && tipoCadastro === TipoCadastro.REVISAR_CHAVES) {
                 console.log("Botão 1 do mouse pressionado!");
                 event.preventDefault();
                 obterChave();
