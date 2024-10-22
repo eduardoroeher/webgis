@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Script de Preenchimento
 // @namespace    http://tampermonkey.net/
-// @version      1.07
+// @version      1.08
 // @description  Preenche automaticamente campos no WebGIS - implementação combobox
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @grant        none
@@ -11,7 +11,7 @@
     'use strict';
 
     // Mensagem para verificar se o script está sendo carregado
-    console.log("Script carregado! 1.07");
+    console.log("Script carregado! 1.08");
 
 	var currentUrl = window.location.href;
 
@@ -201,6 +201,9 @@ function preencherCampos() {
                 opcao.click(); // Seleciona a opção clicando nela
                 opcaoEncontrada = true; // Define a flag como verdadeira, indicando que a opção foi encontrada
                 console.log(`Opção '${valor}' encontrada e selecionada.`); // Log de sucesso
+
+		// Disparar eventos após selecionar a opção
+		dispararEventos(filteringSelect.domNode); // Garante que o evento de alteração seja disparado corretamente
             }
         });
 
@@ -384,12 +387,12 @@ function preencherCampos() {
 
     // Função para disparar eventos de mudança, foco e input
     function dispararEventos(campo) {
-        campo.focus();
-        var eventoInput = new Event('input', { bubbles: true });
-        campo.dispatchEvent(eventoInput);
-        var eventoChange = new Event('change', { bubbles: true });
-        campo.dispatchEvent(eventoChange);
-        campo.blur();
+	campo.focus(); // Coloca o campo em foco
+	var eventoInput = new Event('input', { bubbles: true });
+	campo.dispatchEvent(eventoInput); // Dispara o evento de input
+	var eventoChange = new Event('change', { bubbles: true });
+	campo.dispatchEvent(eventoChange); // Dispara o evento de mudança
+	campo.blur(); // Remove o foco do campo
     }
 
     // Função para adicionar o ouvinte do botão direito do mouse
