@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Script de Preenchimento
 // @namespace    http://tampermonkey.net/
-// @version      1.06
+// @version      1.07
 // @description  Preenche automaticamente campos no WebGIS - implementação combobox
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @grant        none
@@ -11,7 +11,7 @@
     'use strict';
 
     // Mensagem para verificar se o script está sendo carregado
-    console.log("Script carregado! 1.06");
+    console.log("Script carregado! 1.07");
 
 	var currentUrl = window.location.href;
 
@@ -106,7 +106,7 @@ function preencherCampos() {
 
     // Função para preencher o campo "Operador CQ"
     function preencherOperadorCQ(valorOperadorCQ) {
-        var campoOperadorCQ = document.querySelector('input[aria-label="Operador CQ"]');
+        var campoOperadorCQ = document.querySelector('textarea[aria-label="Operador CQ"]');
         if (campoOperadorCQ) {
             campoOperadorCQ.value = valorOperadorCQ;
             dispararEventos(campoOperadorCQ);
