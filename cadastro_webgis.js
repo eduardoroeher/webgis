@@ -231,6 +231,7 @@
 
     // Variável global para manter a referência da notificação atual
     let notificacaoAtual = null;
+    let corAtualEscura = true; // Variável para alternar entre as cores
 
     // Função para copiar texto para a área de transferência
     function copiarParaAreaDeTransferencia(texto) {
