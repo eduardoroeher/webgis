@@ -26,7 +26,7 @@ window.exibirPromptNome = function(versionamento) {
         const title = document.createElement('h3');
         title.innerText = `Versão: ${versionamento}`;
         const instruction = document.createElement('p');
-        instruction.innerText = 'Por favor, insira o seu nome:';
+        instruction.innerText = 'Por favor, insira o seu nome!';
 
         // Input de texto
         const input = document.createElement('input');
