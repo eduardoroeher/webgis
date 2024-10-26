@@ -1,15 +1,14 @@
-// FormTipoCadastro.js
-
-(function() {
     // Enum para tipos de cadastro
-    window.TipoCadastro = {
+    const TipoCadastro = {
         NOVO_CADASTRO: 'NOVO CADASTRO',
         REVISAO: 'REVISÃO',
-        REVISAR_CHAVES: 'REVISAR CHAVES'
+		REVISAR_CHAVES: 'REVISAR CHAVES'
     };
 
-    // Função que exibe um combobox para o determinar o tipo de cadastro que será realizado
-    window.FormTipoCadastro = function() {
+
+    window.FormTipoCadastro = function(versionamento) {
+    return new Promise((resolve) => {
+
         var container = document.createElement('div');
         container.style.position = 'fixed';
         container.style.top = '50%';
@@ -41,9 +40,9 @@
             ${bicLabel}
             <label for="tipoCadastroSelect" style="height: 20px; font-size: 14px;">Escolha o tipo de cadastro:</label>
             <select id="tipoCadastroSelect" style="height: 40px; font-size: 14px;">
-                <option value="${window.TipoCadastro.NOVO_CADASTRO}">Novo Cadastro</option>
-                <option value="${window.TipoCadastro.REVISAO}">Revisão</option>
-                <option value="${window.TipoCadastro.REVISAR_CHAVES}">Revisar Chaves</option>
+                <option value="${TipoCadastro.NOVO_CADASTRO}">Novo Cadastro</option>
+                <option value="${TipoCadastro.REVISAO}">Revisão</option>
+                <option value="${TipoCadastro.REVISAR_CHAVES}">Revisar Chaves</option>
             </select>
             <button id="confirmarTipoCadastro" style="height: 40px; padding: 10px; font-size: 14px;">Confirmar</button>
         `;
@@ -56,5 +55,6 @@
             console.log("Tipo de cadastro escolhido:", window.tipoCadastro);
             // Chamar aqui a função que depende do tipo de cadastro selecionado
         });
-    };
-})
+    });
+};
+
