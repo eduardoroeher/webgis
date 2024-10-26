@@ -2,7 +2,7 @@
     const TipoCadastro = {
         NOVO_CADASTRO: 'NOVO CADASTRO',
         REVISAO: 'REVISÃO',
-		REVISAR_CHAVES: 'REVISAR CHAVES'
+	REVISAR_CHAVES: 'REVISAR CHAVES'
     };
 
 
