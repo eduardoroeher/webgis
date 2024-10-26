@@ -1,9 +1,9 @@
- // Enum para tipos de cadastro
- const TipoCadastro = {
+// Enum para tipos de cadastro
+const TipoCadastro = {
     NOVO_CADASTRO: 'NOVO CADASTRO',
     REVISAO: 'REVISÃO',
-	REVISAR_CHAVES: 'REVISAR CHAVES'
-	};
+    REVISAR_CHAVES: 'REVISAR CHAVES'
+};
 
 // Cria uma função customizada para exibir o prompt de nome e tipo de cadastro
 window.exibirPromptNome = function(versionamento) {
