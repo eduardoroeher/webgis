@@ -1,4 +1,11 @@
-// Cria uma função customizada para exibir o prompt de nome
+ // Enum para tipos de cadastro
+ const TipoCadastro = {
+    NOVO_CADASTRO: 'NOVO CADASTRO',
+    REVISAO: 'REVISÃO',
+	REVISAR_CHAVES: 'REVISAR CHAVES'
+	};
+
+// Cria uma função customizada para exibir o prompt de nome e tipo de cadastro
 window.exibirPromptNome = function(versionamento) {
     return new Promise((resolve) => {
         // Criação do container do prompt
@@ -29,6 +36,29 @@ window.exibirPromptNome = function(versionamento) {
         input.style.marginTop = '10px';
         input.style.fontSize = '14px';
 
+        // Combobox para selecionar o tipo de cadastro
+        const selectLabel = document.createElement('p');
+        selectLabel.innerText = 'Selecione o tipo de cadastro:';
+        const select = document.createElement('select');
+        select.id = 'tipoCadastroSelect';
+        select.style.width = '100%';
+        select.style.height = '40px';
+        select.style.fontSize = '14px';
+        
+        // Opções do combobox
+        const options = [
+            { value: TipoCadastro.NOVO_CADASTRO, text: 'Novo Cadastro' },
+            { value: TipoCadastro.REVISAO, text: 'Revisão' },
+            { value: TipoCadastro.REVISAR_CHAVES, text: 'Revisar Chaves' }
+        ];
+
+        options.forEach(opt => {
+            const option = document.createElement('option');
+            option.value = opt.value;
+            option.text = opt.text;
+            select.appendChild(option);
+        });
+
         // Botão de confirmação
         const confirmButton = document.createElement('button');
         confirmButton.innerText = 'Confirmar';
@@ -37,14 +67,17 @@ window.exibirPromptNome = function(versionamento) {
         confirmButton.style.fontSize = '14px';
         confirmButton.addEventListener('click', function () {
             const nome = input.value.trim();
+            const tipoCadastroSelecionado = select.value;
             document.body.removeChild(container);
-            resolve(nome);  // Retorna o nome inserido
+            resolve({ nome, tipoCadastroSelecionado });
         });
 
         // Adiciona os elementos ao container e ao corpo do documento
         container.appendChild(title);
         container.appendChild(instruction);
         container.appendChild(input);
+        container.appendChild(selectLabel);
+        container.appendChild(select);
         container.appendChild(confirmButton);
         document.body.appendChild(container);
     });
