@@ -57,4 +57,4 @@
             // Chamar aqui a função que depende do tipo de cadastro selecionado
         });
     };
-})();
+})
