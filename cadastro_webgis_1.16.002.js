@@ -2,7 +2,7 @@
 // @name         Script de Preenchimento
 // @namespace    http://tampermonkey.net/
 // @version      1.16.002
-// @description  Refatorarção
+// @description  Aumento no tempo de preenchimento entre campos projeto  REVISAR_CHAVE
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=c52271fd9c1e4515a1f1dafd8ce5ad2a
 // @grant        none
