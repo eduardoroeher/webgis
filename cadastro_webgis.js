@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Alterado verificarTabela() - Removido maximo de tentativas (else...)
 // @namespace    http://tampermonkey.net/
-// @version      1.16.006
+// @version      1.16.006 not
 // @description  Forcando campo Status
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=c52271fd9c1e4515a1f1dafd8ce5ad2a
@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-	var versionamento = "1.16.006";
+	var versionamento = "1.16.006 not";
 
     // Mensagem para verificar se o script está sendo carregado
     console.log("Script carregado! " + versionamento);
@@ -29,6 +29,8 @@
 
 	// Variável global para ativar ou desativar o modo automático
 	let modoAutomaticoAtivo = false;
+
+	let unicaNotificacao = false;
 
     // Lista de inputs e valores para os comboboxes
     const listaInputs = [
@@ -612,6 +614,7 @@
 
 
 //----------------------------------------------
+	
 
 	function monitorarPopup() {
 		let tentativas = 0;
@@ -661,19 +664,23 @@
 					}
 				}
                 else{
-					// Exibe a notificação com os dados encontrados
-					exibirNotificacao(`
-						TABELA NÃO ENCONTRADA. 
-						<br>----------------------------
-						<br>Fechar o LandView 
-						<br>Clicar novamente no ponto 
-						<br>Abrir o LandView	
-						<br>----------------------------
-						<br>Pode ser que a área de visão
-						<br>do LandViwer(triângulo vermelho)
-						<br>esteja, no momento, sobrepondo o
-						<br>ponto de marcação.			
-					`);
+
+					if(!unicaNotificacao){
+						// Exibe a notificação com os dados encontrados
+						exibirNotificacao(`
+							TABELA NÃO ENCONTRADA. 
+							<br>----------------------------
+							<br>Fechar o LandView 
+							<br>Clicar novamente no ponto 
+							<br>Abrir o LandView	
+							<br>----------------------------
+							<br>Pode ser que a área de visão
+							<br>do LandViwer(triângulo vermelho)
+							<br>esteja, no momento, sobrepondo o
+							<br>ponto de marcação.			
+						`);
+						unicaNotificacao = true;
+					}
                 }
                 /*else {
 					tentativas++;
