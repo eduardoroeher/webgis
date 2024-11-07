@@ -821,7 +821,7 @@
 
 		document.addEventListener('mousedown', function(event) {
 
-			console.warn("EVENT " + event.target.tagName);
+			//console.warn("EVENT " + event.target.tagName);
 
 			if(modoAutomaticoAtivo){
 
