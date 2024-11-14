@@ -830,9 +830,7 @@
 	function configurarAtalhosTeclado() {
 
 		document.addEventListener('keydown', async function(event) {
-
-			console.log(`Tecla pressionada: ${event.key}, Código da tecla: ${event.code}`);
-			
+		
 			// Ativa ou desativa o modo automático
 			if (event.altKey && event.key.toLowerCase() === 'a') {
 
