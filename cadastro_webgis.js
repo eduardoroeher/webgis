@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         1.6 - Cadastro automático de campos
 // @namespace    http://tampermonkey.net/
-// @version      1.16.007A
+// @version      1.16.007B
 // @description  Incluído o módulo BIC Cadastro
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=6cbe01fc405f4834a8997f7897d286e9
 // @match        https://webgis.engefoto.com.br/portal/apps/webappviewer/index.html?id=c52271fd9c1e4515a1f1dafd8ce5ad2a
@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-	var versionamento = "1.16.007A";
+	var versionamento = "1.16.007B";
 
     // Mensagem para verificar se o script está sendo carregado
     console.log("Script carregado! " + versionamento);
@@ -831,6 +831,8 @@
 
 		document.addEventListener('keydown', async function(event) {
 
+			console.log(`Tecla pressionada: ${event.key}, Código da tecla: ${event.code}`);
+			
 			// Ativa ou desativa o modo automático
 			if (event.altKey && event.key.toLowerCase() === 'a') {
 
