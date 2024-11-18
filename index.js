@@ -41,8 +41,8 @@
     */
     function carregarDependencias() {
         const scripts = [
-            'http://localhost:8080/functions/popupSelecionarFase.js',
-            'http://localhost:8080/functions/preencherCampos.js'
+            './functions/popupSelecionarFase.js',
+            './functions/preencherCampos.js'
         ];
       
         // Promises para carregar apenas scripts ainda não carregados
