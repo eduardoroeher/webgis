@@ -41,8 +41,8 @@
     */
     function carregarDependencias() {
         const scripts = [
-            './functions/popupSelecionarFase.js',
-            './functions/preencherCampos.js'
+            'https://eduardoroeher.github.io/webgis/functions/popupSelecionarFase.js',
+            'https://eduardoroeher.github.io/webgis/functions/preencherCampos.js'
         ];
       
         // Promises para carregar apenas scripts ainda não carregados
