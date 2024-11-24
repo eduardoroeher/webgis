@@ -66,8 +66,8 @@
     // Função para carregar dependências
     async function carregarDependencias() {
         const scripts = [
-            'http://localhost:8080/functions/login.js',
-            'http://localhost:8080/functions/preencherCampos.js'
+            'https://eduardoroeher.github.io/webgis/functions/login.js',
+            'https://eduardoroeher.github.io/webgis/functions/preencherCampos.js'
         ];
 
         try {
