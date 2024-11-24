@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var versao = "2.01.000";
+    var versao = "2.01.00";
 
     let nomeCadastrador = null;
     let tipoCadastro = null;
