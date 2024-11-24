@@ -14,7 +14,8 @@ window.TipoCadastro = {
 // Função para exibir o combobox para o tipo de cadastro e campo de nome
 async function frmLogin(versao) {
 
-    console.warn(versao);
+    console.log(`VERSÃO ${versao}`);
+    
     // Verifica se o popup já existe e o remove
     const popupExistente = document.getElementById('tipoCadastroPopup');
     if (popupExistente) {
