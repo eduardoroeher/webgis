@@ -148,27 +148,25 @@
 	// #region
 
     function configurarAtalhosTeclado() {
-        // Função de espera para adicionar um atraso
+        // Função para adicionar atraso
         function esperar(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
     
-        // Bloqueio para evitar execuções duplicadas
+        // Variável de bloqueio para evitar execução duplicada
         let bloqueioAtalho = false;
     
         document.addEventListener('keydown', async function (event) {
-
+            // Depuração: Mostra as teclas pressionadas
+            console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
+    
+            if (bloqueioAtalho) return; // Impede execução repetida
+            bloqueioAtalho = true;
     
             if (event.altKey && event.key.toLowerCase() === 'c') {
-
-                if (bloqueioAtalho) return; // Impede execução repetida
-
-                bloqueioAtalho = true;
-
-                event.preventDefault();
+                event.preventDefault(); // Previne o comportamento padrão
                 console.log("Atalho Alt + C pressionado!");
     
-                // Verifica se os dados do usuário já foram cadastrados
                 let resultado = await verificarLogin();
                 if (resultado) {
                     let formularioAtivo = await verificarFormularioAtivo();
@@ -192,13 +190,13 @@
                 }
             }
     
-            // Libera o bloqueio após um curto intervalo
-            await esperar(1000); // Ajuste o tempo conforme necessário
+            // Libera o bloqueio após um pequeno intervalo
+            await esperar(300);
             bloqueioAtalho = false;
-		console.log("Liberado!");
+            console.log("Liberado C");
         });
     }
-    
+        
 	// #endregion
 
 
