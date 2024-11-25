@@ -157,10 +157,14 @@
         let bloqueioAtalho = false;
     
         document.addEventListener('keydown', async function (event) {
-            if (bloqueioAtalho) return; // Impede execução repetida
-            bloqueioAtalho = true;
+
     
             if (event.altKey && event.key.toLowerCase() === 'c') {
+
+                if (bloqueioAtalho) return; // Impede execução repetida
+
+                bloqueioAtalho = true;
+
                 event.preventDefault();
                 console.log("Atalho Alt + C pressionado!");
     
@@ -191,7 +195,7 @@
             // Libera o bloqueio após um curto intervalo
             await esperar(1000); // Ajuste o tempo conforme necessário
             bloqueioAtalho = false;
-	    console.log("Atalho liberado!");
+		console.log("Liberado!");
         });
     }
     
