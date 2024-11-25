@@ -169,7 +169,7 @@
                         alert("Formulário não encontrado no Editor Inteligente!");
                     }
                 } else {
-                    console.log("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
+                    alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
                 }
             }
             else if (event.altKey && event.key.toLowerCase() === 'i') {
