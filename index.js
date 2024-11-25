@@ -179,7 +179,7 @@
                             //Aqui não carrega, apenas executa o que já está em memória
                             preencherCampo(nomeCadastrador, tipoCadastro);
                         } else {
-                            alert("Formulário não encontrado!");                           
+                            alert("Formulário não encontrado no Editor Inteligente!");                           
                         }
 
                     } else {
