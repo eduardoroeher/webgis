@@ -145,57 +145,39 @@
     /*=============================
     FUNÇÃO PARA LER OS COMANDOS DO TECLADO
     =============================*/
-    // #region
+       // #region
 
     function configurarAtalhosTeclado() {
 
-        // Função de espera para adicionar um atraso
-        function esperar(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-        let bloqueioAtalho = false;
-
         document.addEventListener('keydown', async function (event) {
 
-            if (!bloqueioAtalho) {               
-                // Verifica se Alt + C foi pressionado para preenchimento de campos
-                if (event.altKey && event.key.toLowerCase() === 'c') {
-                    bloqueioAtalho = true;
-                    console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
-                    
+            console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
 
-                    event.preventDefault(); // Impede comportamentos padrão do browser, se necessário
-                    console.log("Atalho Alt + C pressionado!");
+            // Verifica se Alt + C foi pressionado para preenchimento de campos
+            if (event.altKey && event.key.toLowerCase() === 'c') {
 
-                    // Verifica se os dados já foram cadastrados, PORÉM NÃO REINIALIZA O SCRIPT COMO UTILIZAR FAZ A FUNÇÃO "inicializar()"
-                    let resultado = await verificarLogin();
+                event.preventDefault(); // Impede comportamentos padrão do browser, se necessário                  
 
-                    //Verifica se o formulário a ser preenchido está ativo em tela
-                    if (resultado) {
+                //Verifica se o formulário a ser preenchido está ativo em tela
+                if (nomeCadastrador && tipoCadastro) {
 
-                        let formularioAtivo = await verificarFormularioAtivo(); //Verifica se o formulário está ativo em tela para cadastrar os campos
-                        if (formularioAtivo) {
-                            //Aqui não carrega, apenas executa o que já está em memória
-                            preencherCampo(nomeCadastrador, tipoCadastro);
-                        } else {
-                            alert("Formulário não encontrado no Editor Inteligente!");                           
-                        }
-
+                    let formularioAtivo = await verificarFormularioAtivo(); //Verifica se o formulário está ativo em tela para cadastrar os campos
+                    if (formularioAtivo) {
+                        //Aqui não carrega, apenas executa o que já está em memória
+                        preencherCampo(nomeCadastrador, tipoCadastro);
                     } else {
-                        console.log("Formulário de login não preenchido!");                      
+                        alert("Formulário não encontrado no Editor Inteligente!");
                     }
-                    bloqueioAtalho = false;
-
+                } else {
+                    console.log("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
                 }
-                else if (event.altKey && event.key.toLowerCase() === 'i') {
-                    console.log("Reiniciar dependências...");
+            }
+            else if (event.altKey && event.key.toLowerCase() === 'i') {
+                console.log("Reiniciar dependências...");
 
-                    inicializar()
-                        .then(() => console.log("Dependências recarregadas com sucesso."))
-                        .catch((error) => console.error("Erro ao recarregar dependências:", error));
-                }
-                
+                inicializar()
+                    .then(() => console.log("Dependências recarregadas com sucesso."))
+                    .catch((error) => console.error("Erro ao recarregar dependências:", error));
             }
 
         });
