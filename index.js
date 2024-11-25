@@ -147,56 +147,52 @@
 	=============================*/
 	// #region
 
-    function configurarAtalhosTeclado() {
-        // Função para adicionar atraso
+	function configurarAtalhosTeclado() {
+
+        // Função de espera para adicionar um atraso
         function esperar(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
-    
-        // Variável de bloqueio para evitar execução duplicada
-        let bloqueioAtalho = false;
-    
-        document.addEventListener('keydown', async function (event) {
-            // Depuração: Mostra as teclas pressionadas
-            console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
-    
-            if (bloqueioAtalho) return; // Impede execução repetida
-            bloqueioAtalho = true;
-    
-            if (event.altKey && event.key.toLowerCase() === 'c') {
-                event.preventDefault(); // Previne o comportamento padrão
-                console.log("Atalho Alt + C pressionado!");
-    
-                let resultado = await verificarLogin();
-                if (resultado) {
-                    let formularioAtivo = await verificarFormularioAtivo();
-                    if (formularioAtivo) {
+
+		document.addEventListener('keydown', async function(event) {
+
+		    // Verifica se Alt + C foi pressionado para preenchimento de campos
+			if (event.altKey && event.key.toLowerCase() === 'c') {
+			       
+                event.preventDefault(); // Impede comportamentos padrão do browser, se necessário
+				console.log("Atalho Alt + C pressionado!");
+
+                // Verifica se os dados já foram cadastrados, PORÉM NÃO REINIALIZA O SCRIPT COMO UTILIZAR FAZ A FUNÇÃO "inicializar()"
+                let resultado = await verificarLogin(); 
+                
+                //Verifica se o formulário a ser preenchido está ativo em tela
+                if(resultado){
+
+                    let formularioAtivo = await verificarFormularioAtivo(); //Verifica se o formulário está ativo em tela para cadastrar os campos
+                    if(formularioAtivo){
+                        //Aqui não carrega, apenas executa o que já está em memória
                         preencherCampo(nomeCadastrador, tipoCadastro);
-                    } else {
+                    }else{
                         alert("Formulário não encontrado!");
+                        return;                       
                     }
-                } else {
+
+                }else{
                     console.log("Formulário de login não preenchido!");
+                    return;
                 }
-            } 
+
+			} 
             else if (event.altKey && event.key.toLowerCase() === 'i') {
-                event.preventDefault();
                 console.log("Reiniciar dependências...");
-                try {
-                    await inicializar();
-                    console.log("Dependências recarregadas com sucesso.");
-                } catch (error) {
-                    console.error("Erro ao recarregar dependências:", error);
-                }
+                
+                inicializar()
+                    .then(() => console.log("Dependências recarregadas com sucesso."))
+                    .catch((error) => console.error("Erro ao recarregar dependências:", error));
             }
-    
-            // Libera o bloqueio após um pequeno intervalo
-            await esperar(300);
-            bloqueioAtalho = false;
-            console.log("Liberado C");
-        });
-    }
-        
+                 
+		});
+	}
 	// #endregion
 
 
