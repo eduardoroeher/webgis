@@ -189,8 +189,9 @@
             }
     
             // Libera o bloqueio após um curto intervalo
-            await esperar(300); // Ajuste o tempo conforme necessário
+            await esperar(1000); // Ajuste o tempo conforme necessário
             bloqueioAtalho = false;
+	    console.log("Atalho liberado!");
         });
     }
     
