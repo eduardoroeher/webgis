@@ -157,7 +157,9 @@
             if (event.altKey && event.key.toLowerCase() === 'c') {
                 console.log(`04 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
                 event.preventDefault(); // Impede comportamentos padrão do browser, se necessário   
-
+                
+                await verificarLogin();
+                
                 if (nomeCadastrador && tipoCadastro) {
                     console.log("Verificando formulário ativo...");
                     let formularioAtivo = await verificarFormularioAtivo();
@@ -172,7 +174,7 @@
                 }
                 else {
                     alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
-                    await verificarLogin();
+                    //await verificarLogin();
                 }
 
 
