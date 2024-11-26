@@ -156,7 +156,24 @@
             // Verifica se Alt + C foi pressionado para preenchimento de campos
             if (event.altKey && event.key.toLowerCase() === 'c') {
                 console.log(`01 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
-                event.preventDefault(); // Impede comportamentos padrão do browser, se necessário                  
+                event.preventDefault(); // Impede comportamentos padrão do browser, se necessário   
+
+                if (nomeCadastrador && tipoCadastro) {
+                    console.log("Verificando formulário ativo...");
+                    let formularioAtivo = await verificarFormularioAtivo();
+                    console.log("Formulário ativo:", formularioAtivo);
+                
+                    if (formularioAtivo) {
+                        console.log("Preenchendo campo...");
+                        preencherCampo(nomeCadastrador, tipoCadastro);
+                    } else {
+                        alert("Formulário não encontrado no Editor Inteligente!");
+                    }
+                }
+
+
+
+                
 /*
                 //Verifica se o formulário a ser preenchido está ativo em tela
                 if (nomeCadastrador && tipoCadastro) {
