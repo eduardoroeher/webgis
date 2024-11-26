@@ -151,13 +151,13 @@
 
         document.addEventListener('keydown', async function (event) {
 
-            console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
+            
 
             // Verifica se Alt + C foi pressionado para preenchimento de campos
             if (event.altKey && event.key.toLowerCase() === 'c') {
-
+                console.log(`Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
                 event.preventDefault(); // Impede comportamentos padrão do browser, se necessário                  
-
+/*
                 //Verifica se o formulário a ser preenchido está ativo em tela
                 if (nomeCadastrador && tipoCadastro) {
 
@@ -170,7 +170,7 @@
                     }
                 } else {
                     alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
-                }
+                }*/
             }
             else if (event.altKey && event.key.toLowerCase() === 'i') {
                 console.log("Reiniciar dependências...");
