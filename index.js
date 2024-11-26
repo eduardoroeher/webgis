@@ -170,6 +170,9 @@
                         alert("Formulário não encontrado no Editor Inteligente!");
                     }
                 }
+                else {
+                    alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
+                }
 
 
 
