@@ -155,7 +155,7 @@
 
             // Verifica se Alt + C foi pressionado para preenchimento de campos
             if (event.altKey && event.key.toLowerCase() === 'c') {
-                console.log(`02 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
+                console.log(`03 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
                 event.preventDefault(); // Impede comportamentos padrão do browser, se necessário   
 
                 if (nomeCadastrador && tipoCadastro) {
