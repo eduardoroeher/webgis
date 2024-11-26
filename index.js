@@ -161,9 +161,9 @@
                         alert("Formulário não encontrado no Editor Inteligente!");
                     }
                 }
-                else {
-                    alert("Operação cancelada pelo usuário!");
-                }
+                //else {
+                //    alert("Operação cancelada pelo usuário!");
+                //}
             }
             else if (event.altKey && event.key.toLowerCase() === 'i') {
                 console.log("Reiniciar dependências...");
