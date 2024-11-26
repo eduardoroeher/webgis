@@ -92,7 +92,6 @@
 
         console.log("Verificando login");
 
-
         // Caso não encontre o cadastrador e o tipo de cadastro, abre janela para cadastrar
         try {
             if (!nomeCadastrador || !tipoCadastro) {
@@ -102,20 +101,10 @@
                 nomeCadastrador = nome;
                 tipoCadastro = cadastro;
 
-                console.log("Valores definidos:");
-                console.log("Nome Cadastrador:", nomeCadastrador);
-                console.log("Tipo Cadastro:", tipoCadastro);
-
                 return true; // Retorna verdadeiro se os valores foram definidos                
             }
             else {
-
-                console.log("Valores já definidos:");
-                console.log("Nome Cadastrador:", nomeCadastrador);
-                console.log("Tipo Cadastro:", tipoCadastro);
-
                 return true; // Retorna falso se os valores já estavam definidos
-
             }
         } catch (error) {
             console.error("Erro ou ação cancelada:", error);
@@ -146,8 +135,8 @@
     FUNÇÃO PARA LER OS COMANDOS DO TECLADO
     =============================*/
     // #region
-    
-   function configurarAtalhosTeclado() {
+
+    function configurarAtalhosTeclado() {
 
         document.addEventListener('keydown', async function (event) {
 
@@ -173,7 +162,7 @@
                     }
                 }
                 else {
-                    alert("Nome do usuário não preenchido!");
+                    alert("Operação cancelada pelo usuário!");
                 }
             }
             else if (event.altKey && event.key.toLowerCase() === 'i') {
@@ -186,7 +175,6 @@
 
         });
     }
-   
     // #endregion
 
 
