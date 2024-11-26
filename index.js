@@ -145,26 +145,26 @@
     /*=============================
     FUNÇÃO PARA LER OS COMANDOS DO TECLADO
     =============================*/
-       // #region
-
-    function configurarAtalhosTeclado() {
+    // #region
+    
+   function configurarAtalhosTeclado() {
 
         document.addEventListener('keydown', async function (event) {
 
-            
-
             // Verifica se Alt + C foi pressionado para preenchimento de campos
             if (event.altKey && event.key.toLowerCase() === 'c') {
-                console.log(`04 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
+
+                console.log(`05 - Tecla pressionada: ${event.key}, AltKey: ${event.altKey}`);
                 event.preventDefault(); // Impede comportamentos padrão do browser, se necessário   
-                
-                await verificarLogin();
-                
-                if (nomeCadastrador && tipoCadastro) {
-                    console.log("Verificando formulário ativo...");
+
+                let logado = await verificarLogin();
+
+                if (logado) {
+
+                    console.log("Verificando formulário ativo...");                   
                     let formularioAtivo = await verificarFormularioAtivo();
                     console.log("Formulário ativo:", formularioAtivo);
-                
+
                     if (formularioAtivo) {
                         console.log("Preenchendo campo...");
                         preencherCampo(nomeCadastrador, tipoCadastro);
@@ -173,27 +173,8 @@
                     }
                 }
                 else {
-                    alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
-                    //await verificarLogin();
+                    alert("Nome do usuário não preenchido!");
                 }
-
-
-
-                
-/*
-                //Verifica se o formulário a ser preenchido está ativo em tela
-                if (nomeCadastrador && tipoCadastro) {
-
-                    let formularioAtivo = await verificarFormularioAtivo(); //Verifica se o formulário está ativo em tela para cadastrar os campos
-                    if (formularioAtivo) {
-                        //Aqui não carrega, apenas executa o que já está em memória
-                        preencherCampo(nomeCadastrador, tipoCadastro);
-                    } else {
-                        alert("Formulário não encontrado no Editor Inteligente!");
-                    }
-                } else {
-                    alert("Formulário de login não preenchido! Pressione [Alt + i] para abrir o formulário.");
-                }*/
             }
             else if (event.altKey && event.key.toLowerCase() === 'i') {
                 console.log("Reiniciar dependências...");
@@ -205,6 +186,7 @@
 
         });
     }
+   
     // #endregion
 
 
