@@ -148,6 +148,8 @@ async function preencherCampo(nomeCadastrador, tipoCadastro) {
             preencherCampoTextarea("Operador CQ", nomeCadastrador, true);
             preencherInputData("Data do CQ"); // Cadastra campo "Data do CQ"
 
+            break;
+
         default:
             console.log("Tipo de cadastro inválido ou não definido:", tipoCadastro);
     }
