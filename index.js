@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var versao = "2.01.01"; // AJUSTANDO "ALT + C"
+    var versao = "2.01.02"; // AJUSTANDO "ALT + C"
 
     let nomeCadastrador = null;
     let tipoCadastro = null;
