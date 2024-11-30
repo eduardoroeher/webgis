@@ -1,0 +1,14 @@
+{
+    "1.0": {
+        "status": "true",
+        "mensagem": "Esta versão é válida. Bem-vindo!"
+    },
+    "1.1": {
+        "status": "false",
+        "mensagem": "Versão descontinuada. Atualize o aplicativo."
+    },
+    "2.0": {
+        "status": "true",
+        "mensagem": "Nova versão disponível com recursos avançados."
+    }
+}
