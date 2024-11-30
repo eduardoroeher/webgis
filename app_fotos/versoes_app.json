@@ -6,5 +6,9 @@
     "1.1": {
         "Status": "false",
         "Mensagem": "Atualize para continuar."
+    },
+    "2.0": {
+        "Status": "false",
+        "Mensagem": "Nova versão disponível com recursos avançados."
     }
 }
