@@ -10,5 +10,9 @@
     "2.0": {
         "Status": "true",
         "Mensagem": "Nova versão disponível com recursos avançados."
+    },
+        "3.0": {
+        "Status": "true",
+        "Mensagem": ""
     }
 }
