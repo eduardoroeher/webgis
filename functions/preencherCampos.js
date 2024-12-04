@@ -150,9 +150,9 @@ async function preencherCampo(nomeCadastrador, tipoCadastro) {
             await esperar(500);
             
             // Cadastra campo "Status"
-            for (const { selector, valor } of listaCombobox_BicRevisao) {
+            // Cadastra campo "Status"
+            for (const { selector, valor } of listaComboboxStatus) {
                 await esperarCarregamentoCombobox(selector, valor, abrirCombobox);
-                await esperar(500);
             }
 
             break;
