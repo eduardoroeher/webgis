@@ -147,6 +147,13 @@ async function preencherCampo(nomeCadastrador, tipoCadastro) {
             // Cadastra campo "Operador CQ", "nova informação", "substituir se o campo estiver preenchido"
             preencherCampoTextarea("Operador CQ", nomeCadastrador, true);
             preencherInputData("Data do CQ"); // Cadastra campo "Data do CQ"
+            await esperar(500);
+            
+            // Cadastra campo "Status"
+            for (const { selector, valor } of listaCombobox_BicRevisao) {
+                await esperarCarregamentoCombobox(selector, valor, abrirCombobox);
+                await esperar(500);
+            }
 
             break;
 
