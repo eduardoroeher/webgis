@@ -1,1 +1,10 @@
-
+{
+    "1.00.01": {
+        "Status": "true",
+        "Mensagem": ""
+    },
+     "2.00.00": {
+        "Status": "true",
+        "Mensagem": "INICIANDO NOVO RELEASE"
+    }
+}
