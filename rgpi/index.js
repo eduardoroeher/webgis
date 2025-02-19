@@ -1,18 +1,20 @@
 (function () {
     'use strict';
 
+    console.log("O script já foi carregado anteriormente.");
+
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
         if (event.altKey && event.key.toLowerCase() === "c") {
             formatarCampos(function() {
                 // Após a formatação, simula o clique no botão "Gerar PDF"
-                //const botaoPDF = document.getElementById("gerarPDF");
-                //if (botaoPDF) {
-                    //botaoPDF.click(); // Clica no botão "Gerar PDF"
-                    //console.log("Botão 'Gerar PDF' clicado após formatação.");
-                //} else {
-                    //console.log("Botão 'Gerar PDF' não encontrado.");
-                //}
+                /*const botaoPDF = document.getElementById("gerarPDF");
+                if (botaoPDF) {
+                    botaoPDF.click(); // Clica no botão "Gerar PDF"
+                    console.log("Botão 'Gerar PDF' clicado após formatação.");
+                } else {
+                    console.log("Botão 'Gerar PDF' não encontrado.");
+                }*/
             });
         }
     });
@@ -36,7 +38,16 @@
             const inputCampo = document.getElementById(id);
 
             if (inputCampo) {
-                inputCampo.value = formatarNumero(inputCampo.value);
+                let valorAtual = inputCampo.value.trim();
+
+                // Se estiver vazio, definir como "N/A"
+                if (valorAtual === "") {
+                    inputCampo.value = "N/A";
+                } 
+                // Se não estiver "N/A", aplicar a formatação
+                else if (valorAtual !== "N/A") {
+                    inputCampo.value = formatarNumero(valorAtual);
+                }
 
                 // Simula interação com o campo para que o sistema reconheça a mudança
                 inputCampo.focus();
@@ -44,7 +55,7 @@
                 inputCampo.dispatchEvent(new Event("change", { bubbles: true }));
                 inputCampo.blur();
 
-                console.log(`Valor formatado para o campo ${id}: ${inputCampo.value}`);
+                console.log(`Valor atualizado para o campo ${id}: ${inputCampo.value}`);
             }
         });
 
