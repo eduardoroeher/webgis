@@ -8,7 +8,7 @@
                 // Após a formatação, simula o clique no botão "Gerar PDF"
                 const botaoPDF = document.getElementById("gerarPDF");
                 if (botaoPDF) {
-                    botaoPDF.click(); // Clica no botão "Gerar PDF"
+                    //botaoPDF.click(); // Clica no botão "Gerar PDF"
                     console.log("Botão 'Gerar PDF' clicado após formatação.");
                 } else {
                     console.log("Botão 'Gerar PDF' não encontrado.");
