@@ -3,7 +3,7 @@
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
-        if (event.altKey && event.key.toLowerCase() === "f") {
+        if (event.altKey && event.key.toLowerCase() === "c") {
             formatarCampos(function() {
                 // Após a formatação, simula o clique no botão "Gerar PDF"
                 //const botaoPDF = document.getElementById("gerarPDF");
