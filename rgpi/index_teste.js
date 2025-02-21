@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02");
+    console.log("O script já foi carregado anteriormente. - V_03");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
