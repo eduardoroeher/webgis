@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script foi carregado - 3");
+    console.log("O script foi carregado - 4");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -66,21 +66,24 @@
     /**
      * Função para formatar o número no padrão desejado
      * Exemplo:
+     *  - "7444555666" -> "7.444.555,666"
      *  - "7.444.555.666" -> "7.444.555,666"
-     *  - "7444555666" -> "7.444.555,000"
+     *  - "7444555.666" -> "7.444.555,666"
      */
     function formatarNumero(valor) {
         // Remove todos os pontos existentes na parte inteira
-        let partes = valor.split(',');
+        let partes = valor.split('.');
         let parteInteira = partes[0].replace(/\./g, ''); // Remove pontos da parte inteira
-        let parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
+        let parteDecimal = partes.slice(1).join(''); // Junta todas as partes após o primeiro ponto
 
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
-        // Se não houver parte decimal, define como ",000"
-        if (!parteDecimal) {
-            parteDecimal = '000';
+        // Garante que a parte decimal tenha exatamente 3 dígitos
+        if (parteDecimal.length > 3) {
+            parteDecimal = parteDecimal.slice(0, 3); // Corta para 3 dígitos
+        } else if (parteDecimal.length < 3) {
+            parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
         }
 
         // Junta as partes de volta, separando a parte decimal com uma vírgula
