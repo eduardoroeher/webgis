@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02.01");
+    console.log("O script já foi carregado anteriormente. - V_02.02");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -93,10 +93,11 @@
 
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
+		
+		parteDecimal = parteDecimal.replace(/\./g, ''); // Remove pontos da parte inteira
         // Garante que a parte decimal tenha exatamente 3 dígitos
         if (parteDecimal.length > 3) {
-			parteDecimal = parteDecimal.replace(/\./g, ''); // Remove pontos da parte inteira
+			
             parteDecimal = parteDecimal.slice(0, 3); // Corta para 3 dígitos
         } else if (parteDecimal.length < 3) {
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
