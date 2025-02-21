@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02.04");
+    console.log("O script já foi carregado anteriormente. - V_02.05");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -73,12 +73,12 @@
 	 *  - "7444.555-666" -> "7.444.555,666"
      */
     function formatarNumero(valor) {
-        // Verifica se o valor contém pontuação (vírgula ou hífen)
-        const contemPontuacao = /[,-.]/.test(valor);
+        // Verifica se o valor contém pontuação (vírgula, hífen ou ponto)
+        const contemPontuacao = /[,-.]/.test(valor); // 7444555666 retorna true
 
         let parteInteira, parteDecimal;
 
-        if (!contemPontuacao) {
+        if (contemPontuacao) {		
             // Se não houver pontuação, os últimos 3 dígitos são a parte decimal
             parteInteira = valor.slice(0, -3); // Parte inteira (tudo, exceto os últimos 3 dígitos)
             parteDecimal = valor.slice(-3); // Parte decimal (últimos 3 dígitos)
