@@ -5,8 +5,9 @@
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
-        if (event.altKey && event.key.toLowerCase() === "c") {
-            formatarCampos(function() {
+       alert("Indisponível para manutenção");
+       // if (event.altKey && event.key.toLowerCase() === "c") {
+      //      formatarCampos(function() {
                 // Após a formatação, simula o clique no botão "Gerar PDF"
                 /*const botaoPDF = document.getElementById("gerarPDF");
                 if (botaoPDF) {
@@ -15,8 +16,9 @@
                 } else {
                     console.log("Botão 'Gerar PDF' não encontrado.");
                 }*/
-            });
-        }
+          //  });
+       // }
+ 
     });
 
     /**
