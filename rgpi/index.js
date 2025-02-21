@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O SCRIPT FOI CARREGADO - 2");
+    console.log("O script foi carregado - 3");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -67,7 +67,7 @@
      * Função para formatar o número no padrão desejado
      * Exemplo:
      *  - "7.444.555.666" -> "7.444.555,666"
-     *  - "7444555666" -> "7.444.555,666"
+     *  - "7444555666" -> "7.444.555,000"
      */
     function formatarNumero(valor) {
         // Remove todos os pontos existentes na parte inteira
@@ -78,8 +78,13 @@
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
+        // Se não houver parte decimal, define como ",000"
+        if (!parteDecimal) {
+            parteDecimal = '000';
+        }
+
         // Junta as partes de volta, separando a parte decimal com uma vírgula
-        return parteDecimal ? `${parteInteira},${parteDecimal}` : parteInteira;
+        return `${parteInteira},${parteDecimal}`;
     }
 
 })();
