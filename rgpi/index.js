@@ -70,13 +70,17 @@
      *  - "7487765,003" -> "7.487.765,003"
      */
     function formatarNumero(valor) {
-        let partes = valor.replace(/[^\d,.-]/g, "").split(",");
+        // Remove todos os pontos existentes para evitar duplicação
+        valor = valor.replace(/\./g, '');
 
-        // Se houver ponto (ou hífen para coordenadas), remova e formate separadamente
-        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona ponto a cada 3 dígitos
+        // Divide o valor em parte inteira e decimal
+        let partes = valor.split(',');
+
+        // Formata a parte inteira com pontos a cada 3 dígitos
+        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
         // Junta as partes de volta
-        return partes.join(",");
+        return partes.join(',');
     }
 
 })();
