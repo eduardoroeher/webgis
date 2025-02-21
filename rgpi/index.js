@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente - 01");
+    console.log("Script foi carregado. V1");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -66,11 +66,14 @@
     /**
      * Função para formatar o número como moeda com 3 casas decimais
      * Exemplo:
-     *  - "7444555666" -> "R$ 7.444.555,666"
-     *  - "7.444.555.666" -> "R$ 7.444.555,666"
-     *  - "7444555.666" -> "R$ 7.444.555,666"
+     *  - "593.964-99" -> "R$ 593.964,990"
+     *  - "7.444.555-666" -> "R$ 7.444.555,666"
+     *  - "7444555-66" -> "R$ 7.444.555,660"
      */
     function formatarNumero(valor) {
+        // Substitui o hífen por uma vírgula
+        valor = valor.replace(/-/g, ',');
+
         // Remove todos os pontos existentes na parte inteira
         valor = valor.replace(/\./g, '');
 
@@ -89,8 +92,8 @@
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
         }
 
-        
-        return `${parteInteira},${parteDecimal}`;
+        // Adiciona o símbolo da moeda (R$) e junta as partes
+        return `R$ ${parteInteira},${parteDecimal}`;
     }
 
 })();
