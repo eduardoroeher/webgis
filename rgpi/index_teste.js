@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02.03");
+    console.log("O script já foi carregado anteriormente. - V_02.04");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -74,7 +74,7 @@
      */
     function formatarNumero(valor) {
         // Verifica se o valor contém pontuação (vírgula ou hífen)
-        const contemPontuacao = /[,-]/.test(valor);
+        const contemPontuacao = /[,-.]/.test(valor);
 
         let parteInteira, parteDecimal;
 
