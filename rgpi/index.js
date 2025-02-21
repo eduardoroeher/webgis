@@ -93,7 +93,7 @@
         }
 
         // Adiciona o símbolo da moeda (R$) e junta as partes
-        return `R$ ${parteInteira},${parteDecimal}`;
+        return `${parteInteira},${parteDecimal}`;
     }
 
 })();
