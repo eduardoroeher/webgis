@@ -1,12 +1,3 @@
-// ==UserScript==
-// @name         INDEX LOCAL
-// @namespace    http://tampermonkey.net/
-// @version      2.6
-// @description  Formata valores dos campos e clica no botão PDF automaticamente após formatação
-// @match        http://162.214.154.193/engefoto/cadastros/editaImoveis*
-// @grant        none
-// ==/UserScript==
-
 (function () {
     'use strict';
 
@@ -17,13 +8,13 @@
         if (event.altKey && event.key.toLowerCase() === "c") {
             formatarCampos(function() {
                 // Após a formatação, simula o clique no botão "Gerar PDF"
-                const botaoPDF = document.getElementById("gerarPDF");
+                /*const botaoPDF = document.getElementById("gerarPDF");
                 if (botaoPDF) {
                     botaoPDF.click(); // Clica no botão "Gerar PDF"
                     console.log("Botão 'Gerar PDF' clicado após formatação.");
                 } else {
                     console.log("Botão 'Gerar PDF' não encontrado.");
-                }
+                }*/
             });
         }
     });
@@ -73,19 +64,33 @@
     }
 
     /**
-     * Função para formatar o número no padrão desejado
+     * Função para formatar o número como moeda com 3 casas decimais
      * Exemplo:
-     *  - "681865,638" -> "681.865,638"
-     *  - "7487765,003" -> "7.487.765,003"
+     *  - "7444555666" -> "R$ 7.444.555,666"
+     *  - "7.444.555.666" -> "R$ 7.444.555,666"
+     *  - "7444555.666" -> "R$ 7.444.555,666"
      */
     function formatarNumero(valor) {
-        let partes = valor.replace(/[^\d,.-]/g, "").split(",");
+        // Remove todos os pontos existentes na parte inteira
+        valor = valor.replace(/\./g, '');
 
-        // Se houver ponto (ou hífen para coordenadas), remova e formate separadamente
-        partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Adiciona ponto a cada 3 dígitos
+        // Divide o valor em parte inteira e decimal
+        let partes = valor.split(',');
+        let parteInteira = partes[0];
+        let parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
 
-        // Junta as partes de volta
-        return partes.join(",");
+        // Formata a parte inteira com pontos a cada 3 dígitos
+        parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Garante que a parte decimal tenha exatamente 3 dígitos
+        if (parteDecimal.length > 3) {
+            parteDecimal = parteDecimal.slice(0, 3); // Corta para 3 dígitos
+        } else if (parteDecimal.length < 3) {
+            parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
+        }
+
+        // Adiciona o símbolo da moeda (R$) e junta as partes
+        return `R$ ${parteInteira},${parteDecimal}`;
     }
 
 })();
