@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02.02");
+    console.log("O script já foi carregado anteriormente. - V_02.03");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -90,7 +90,9 @@
             parteInteira = partes[0];
             parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
         }
-
+		
+		console.log("inteira " + parteInteira);
+		console.log("decimal " + parteDecimal);
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 		
