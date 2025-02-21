@@ -67,8 +67,10 @@
      * Função para formatar o número com 3 casas decimais
      * Exemplo:
      *  - "7444555666" -> "7.444.555,666"
+	 *  - "7444555-666" -> "7.444.555,666"
      *  - "593.964-99" -> "593.964,990"
      *  - "7.444.555-666" -> "7.444.555,666"
+	 *  - "7444.555-666" -> "7.444.555,666"
      */
     function formatarNumero(valor) {
         // Verifica se o valor contém pontuação (vírgula ou hífen)
@@ -94,6 +96,7 @@
 
         // Garante que a parte decimal tenha exatamente 3 dígitos
         if (parteDecimal.length > 3) {
+			parteDecimal = parteDecimal.replace(/\./g, ''); // Remove pontos da parte inteira
             parteDecimal = parteDecimal.slice(0, 3); // Corta para 3 dígitos
         } else if (parteDecimal.length < 3) {
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
