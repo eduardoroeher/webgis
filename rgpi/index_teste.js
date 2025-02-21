@@ -74,14 +74,19 @@
      */
     function formatarNumero(valor) {
         // Verifica se o valor contém pontuação (vírgula, hífen ou ponto)
-        const contemPontuacao = /[,-.]/.test(valor); // 7444555666 retorna true
+        const contemPontuacao = /[,-.]/.test(valor); // 7444555666 retorna false, pois não encontra nenhum destes caracteres.
 
         let parteInteira, parteDecimal;
-
-        if (contemPontuacao) {		
+		
+		//Se não tiver pontuação vai retornar true.
+        if (!contemPontuacao) {		
             // Se não houver pontuação, os últimos 3 dígitos são a parte decimal
             parteInteira = valor.slice(0, -3); // Parte inteira (tudo, exceto os últimos 3 dígitos)
             parteDecimal = valor.slice(-3); // Parte decimal (últimos 3 dígitos)
+			
+			console.log("inteira - sem pontuacao" + parteInteira);
+			console.log("decimal - sem pontuacao" + parteDecimal);
+			
         } else {
             // Se houver pontuação, substitui hífen por vírgula e divide em parte inteira e decimal
             valor = valor.replace(/-/g, ','); // Substitui hífen por vírgula
@@ -89,10 +94,12 @@
             let partes = valor.split(','); // Divide em parte inteira e decimal
             parteInteira = partes[0];
             parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
+			
+			console.log("inteira " + parteInteira);
+			console.log("decimal " + parteDecimal);
         }
 		
-		console.log("inteira " + parteInteira);
-		console.log("decimal " + parteDecimal);
+
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 		
