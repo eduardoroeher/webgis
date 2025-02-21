@@ -89,8 +89,8 @@
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
         }
 
-        // Adiciona o símbolo da moeda (R$) e junta as partes
-        return `R$ ${parteInteira},${parteDecimal}`;
+        
+        return `${parteInteira},${parteDecimal}`;
     }
 
 })();
