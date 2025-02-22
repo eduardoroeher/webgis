@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("Script foi carregado. V_01");
+    console.log("O script já foi carregado anteriormente. - V_02");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -64,23 +64,32 @@
     }
 
     /**
-     * Função para formatar o número como moeda com 3 casas decimais
+     * Função para formatar o número com 3 casas decimais
      * Exemplo:
-     *  - "593.964-99" -> "R$ 593.964,990"
-     *  - "7.444.555-666" -> "R$ 7.444.555,666"
-     *  - "7444555-66" -> "R$ 7.444.555,660"
+     *  - "7444555666" -> "7.444.555,666"
+	 *  - "7444555-666" -> "7.444.555,666"
+     *  - "593.964-99" -> "593.964,990"
+     *  - "7.444.555-666" -> "7.444.555,666"
+	 *  - "7444.555-666" -> "7.444.555,666"
      */
     function formatarNumero(valor) {
-        // Substitui o hífen por uma vírgula
-        valor = valor.replace(/-/g, ',');
+        // Verifica se o valor contém pontuação (vírgula ou hífen)
+        const contemPontuacao = /[,-]/.test(valor);
 
-        // Remove todos os pontos existentes na parte inteira
-        valor = valor.replace(/\./g, '');
+        let parteInteira, parteDecimal;
 
-        // Divide o valor em parte inteira e decimal
-        let partes = valor.split(',');
-        let parteInteira = partes[0];
-        let parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
+        if (!contemPontuacao) {
+            // Se não houver pontuação, os últimos 3 dígitos são a parte decimal
+            parteInteira = valor.slice(0, -3); // Parte inteira (tudo, exceto os últimos 3 dígitos)
+            parteDecimal = valor.slice(-3); // Parte decimal (últimos 3 dígitos)
+        } else {
+            // Se houver pontuação, substitui hífen por vírgula e divide em parte inteira e decimal
+            valor = valor.replace(/-/g, ','); // Substitui hífen por vírgula
+            valor = valor.replace(/\./g, ''); // Remove pontos da parte inteira
+            let partes = valor.split(','); // Divide em parte inteira e decimal
+            parteInteira = partes[0];
+            parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
+        }
 
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -92,7 +101,7 @@
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
         }
 
-        // Adiciona o símbolo da moeda (R$) e junta as partes
+        // Retorna o valor formatado sem o símbolo R$
         return `${parteInteira},${parteDecimal}`;
     }
 
