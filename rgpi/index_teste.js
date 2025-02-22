@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    console.log("O script já foi carregado anteriormente. - V_02.06");
+    console.log("O script já foi carregado anteriormente. - V_02.07");
 
     // Atalho "Alt + C" para formatação manual e clique no botão PDF
     document.addEventListener("keydown", function (event) {
@@ -78,41 +78,45 @@
 
         let parteInteira, parteDecimal;
 		
-		//Se não tiver pontuação vai retornar true.
-        if (!contemPontuacao) {		
+        if (!contemPontuacao) {
             // Se não houver pontuação, os últimos 3 dígitos são a parte decimal
             parteInteira = valor.slice(0, -3); // Parte inteira (tudo, exceto os últimos 3 dígitos)
             parteDecimal = valor.slice(-3); // Parte decimal (últimos 3 dígitos)
 			
-			console.log("inteira - sem pontuacao" + parteInteira);
-			console.log("decimal - sem pontuacao" + parteDecimal);
-			
-        } else {
-            // Se houver pontuação, substitui hífen por vírgula e divide em parte inteira e decimal
-            valor = valor.replace(/-/g, ','); // Substitui hífen por vírgula
-            valor = valor.replace(/\./g, ''); // Remove pontos da parte inteira
-            let partes = valor.split(','); // Divide em parte inteira e decimal
-            parteInteira = partes[0];
-            parteDecimal = partes[1] || ''; // Pega a parte decimal, se existir
-			
-			console.log("inteira " + parteInteira);
-			console.log("decimal " + parteDecimal);
+			//console.log("inteira - sem pontuacao" + parteInteira);
+			//console.log("decimal - sem pontuacao" + parteDecimal);			
+        }
+        else {
+           // Se houver pontuação, substitui hífen por vírgula e vírgula por ponto
+           valor = valor.replace(/-/g, ','); // Substitui hífen por vírgula
+           valor = valor.replace(/,/g, '.'); // Substitui vírgula por ponto
+            
+            // Remove todos os pontos da parte inteira
+            valor = valor.replace(/\./g, '');
+            
+            // Encontra a última pontuação (vírgula ou ponto)
+            const ultimaPontuacao = Math.max(valor.lastIndexOf(','), valor.lastIndexOf('.'));
+
+            // Divide em parte inteira e decimal
+            parteInteira = valor.slice(0, ultimaPontuacao); // Parte inteira
+            parteDecimal = valor.slice(ultimaPontuacao + 1); // Parte decimal
         }
 		
 
         // Formata a parte inteira com pontos a cada 3 dígitos
         parteInteira = parteInteira.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 		
-		parteDecimal = parteDecimal.replace(/\./g, ''); // Remove pontos da parte inteira
+        // Remove pontos da parte decimal (caso existam)
+        parteDecimal = parteDecimal.replace(/\./g, '');
+
         // Garante que a parte decimal tenha exatamente 3 dígitos
         if (parteDecimal.length > 3) {
-			
             parteDecimal = parteDecimal.slice(0, 3); // Corta para 3 dígitos
         } else if (parteDecimal.length < 3) {
             parteDecimal = parteDecimal.padEnd(3, '0'); // Completa com zeros
         }
 
-        // Retorna o valor formatado sem o símbolo R$
+        // Retorna o valor formatado
         return `${parteInteira},${parteDecimal}`;
     }
 
