@@ -14,6 +14,11 @@
         "Obs": "",
         "Mensagem": ""
     },
+        "2.00.02": {
+        "Status": "true",
+        "Obs": "LIBERAÇÃO TEMPORÁRIA PARA AJUSTE GAPO/MID - CINTIA - 07/04/2025",
+        "Mensagem": ""
+    },
     "3.00.00": {
         "Status": "true",
         "Obs": "REFATORAÇÃO PARA PASTAS E SUBPASTAS",
