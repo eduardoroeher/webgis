@@ -1,14 +1,22 @@
 {
     "2.00.01": {
         "Status": "false",
+        "Obs": "",
         "Mensagem": "ATENÇÃO: Existe uma nova versão disponível! Favor atualizar!"
     },
      "2.00.02": {
         "Status": "true",
+        "Obs": "",
         "Mensagem": ""
     },
      "2.00.03": {
         "Status": "true",
+        "Obs": "ADICIONADO VERIFICAÇÃO DE REDUNDANCIA NO MD E VERIFICAÇÃO DE ARQUIVO NA PASTA",
+        "Mensagem": ""
+    }
+     "2.00.03": {
+        "Status": "true",
+        "Obs": "",
         "Mensagem": "NOVO RELEASE"
     }
 }
